@@ -1,3 +1,32 @@
+# Datos crudos: NUNCA se versionan (5+ GB de zips XLSX)
+data/raw/*
+!data/raw/.gitkeep
+data/extracted/
+data/*.csv
+data/*.xlsx
+data/*.xls
+data/*.parquet
+
+# Entorno virtual
+.venv/
+venv/
+
+# Credenciales / env local
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+
+# Notas locales del agente (no se entregan)
+.claude/
 AGENTS.md
 CLAUDE.md
-.claude
