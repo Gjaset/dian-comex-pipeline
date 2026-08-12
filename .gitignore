@@ -2,11 +2,13 @@
 data/raw/*
 !data/raw/.gitkeep
 data/extracted/
+data/raw/*
 data/*.csv
 data/*.xlsx
 data/*.xls
 data/*.parquet
 
+src
 # Entorno virtual
 .venv/
 venv/
