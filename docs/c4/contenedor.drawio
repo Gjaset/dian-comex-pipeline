@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" version="1.0">
+  <diagram name="C4-Nivel2-Contenedor" id="cnt1">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Externos -->
+        <mxCell id="ext1" value="Portal DIAN&#xa;[Ext]&#xa;ZIP mensuales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ext2" value="Analista/Gerencia&#xa;[Ext]&#xa;personas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="90" width="260" height="90" as="geometry" />
+        </mxCell>
+        <!-- Contenedores -->
+        <mxCell id="c1" value="Ingesta mensual&#xa;[Python + boto3]&#xa;Descarga ZIP, carga cruda (S3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="90" width="290" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="Lago por capas&#xa;[MinIO S3]&#xa;cruda/refinada/consolidada + versionado" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B63A3;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="650" y="90" width="390" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="Motor batch&#xa;[Hadoop Streaming/YARN]&#xa;FOB por mes x aduana + combiner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="Cuadernos analisis&#xa;[Jupyter + pandas]&#xa;Perfil T1/T3, exploracion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="300" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="Flujo acotado&#xa;[Stream, alcance T7]&#xa;Alertas en minutos (1 requisito)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="300" width="340" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="Base analitica&#xa;[PostgreSQL 16.3]&#xa;Agregados para informes (SQL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B63A3;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="500" width="340" height="100" as="geometry" />
+        </mxCell>
+        <!-- Relaciones -->
+        <mxCell id="a1" value="ZIP (HTTPS)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="ext1" target="c1" />
+        <mxCell id="a2" value="S3 API" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c1" target="c2" />
+        <mxCell id="a3" value="lee cruda" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c2" target="c3" />
+        <mxCell id="a4" value="explora (S3)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c4" target="c2" />
+        <mxCell id="a5" value="vigila refinada" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c2" target="c5" />
+        <mxCell id="a6" value="alertas (minutos)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c5" target="ext2" />
+        <mxCell id="a7" value="carga agregados (SQL)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c4" target="c6" />
+        <mxCell id="a8" value="escribe consolidada" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c3" target="c2" />
+        <mxCell id="a9" value="informes (SQL)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="c6" target="ext2" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

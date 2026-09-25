@@ -1,0 +1,33 @@
+<mxfile host="app.diagrams.net" version="1.0">
+  <diagram name="C4-Nivel1-Contexto" id="ctx1">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="680" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Sistema central -->
+        <mxCell id="sys" value="Plataforma de datos&#xa;[Sistema]&#xa;FOB por mes x aduana, informes y alertas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;fontColor=#ffffff;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="430" y="270" width="300" height="120" as="geometry" />
+        </mxCell>
+        <!-- Personas -->
+        <mxCell id="p1" value="Analista de comercio&#xa;[Persona]&#xa;Explora tendencias, arma informes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="Gerencia&#xa;[Persona]&#xa;Decide con reportes, atiende alertas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="80" width="240" height="100" as="geometry" />
+        </mxCell>
+        <!-- Externos -->
+        <mxCell id="e1" value="Portal DIAN&#xa;[Sistema externo]&#xa;Publica ZIP mensuales (rezago 45 d)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="DANE - metodologia&#xa;[Sistema externo]&#xa;Marco de calidad (referencia)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="480" width="240" height="100" as="geometry" />
+        </mxCell>
+        <!-- Relaciones -->
+        <mxCell id="r1" value="ZIP mensuales (HTTPS)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="e1" target="sys" />
+        <mxCell id="r2" value="informes y refinada (lotes)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="sys" target="p1" />
+        <mxCell id="r3" value="reportes + alertas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="sys" target="p2" />
+        <mxCell id="r4" value="metodologia (referencia)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontSize=11;" edge="1" parent="1" source="e2" target="sys" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
